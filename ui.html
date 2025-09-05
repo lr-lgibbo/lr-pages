@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/figma-plugin-ds.css">
+
+<style>
+.ui {
+  padding: 1% 5%;
+}
+
+h4 {
+  margin-bottom: 2%;
+}
+
+select {
+  font-size: 16px;
+  margin-bottom: 8%;
+  height: 30px;
+  width: 100%;
+}
+
+p {
+  font-size: 14px;
+}
+
+</style>
+
+<div class="ui">
+  <p>This plugin adds the page structure for Product Design Figma files.</p>
+  <h4>Select Motif version used in file</h4>
+  <select id="version">
+      <option selected value="Motif 1.0">Motif 1.0</option>
+      <option value="Motif 2.1">Motif 2.1</option>
+  </select>
+  
+  <div style="clear:both;"></div>
+  <button class="button button--primary" id="run">Run</button>
+  <!-- <button class="button button--secondary" id="cancel">Cancel</button> -->
+</div>
+
+<script>
+
+document.getElementById('run').onclick = () => {
+  const version = document.getElementById('version').value;
+  parent.postMessage({ pluginMessage: { type: 'create-pages', version } }, '*')
+}
+</script>
